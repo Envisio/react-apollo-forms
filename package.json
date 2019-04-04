@@ -1,0 +1,39 @@
+{
+  "name": "react-apollo-forms",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel ./src -d lib --source-maps"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Envisio/react-apollo-forms.git"
+  },
+  "keywords": [],
+  "author": "s@zhso.net",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Envisio/react-apollo-forms/issues"
+  },
+  "homepage": "https://github.com/Envisio/react-apollo-forms#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4"
+  },
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-apollo": "^2.5.3",
+    "react-dom": "^16.8.6"
+  }
+}
