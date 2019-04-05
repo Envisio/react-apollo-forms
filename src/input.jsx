@@ -1,30 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Mutation } from 'react-apollo';
-import { set } from 'lodash';
+import { capitalize, set } from 'lodash';
 
 export default function Input({
   mutation,
   variables,
   valuePath,
-  value,
+  variablesFormatter,
+  mutateEvent,
+  type,
+  ...props
 }) {
   return (
     <Mutation mutation={mutation}>
-      {action => (
-        <input
-          value={value}
-          onChange={({
+      {(mutate) => {
+        const eventProps = {
+          [`on${capitalize(mutateEvent)}`]: ({
             target: {
               value: newValue,
             },
           }) => {
-            action({
-              variables: set(variables, valuePath, newValue),
+            mutate({
+              variables: variablesFormatter({
+                variables,
+                valuePath,
+                value: newValue,
+              }),
             });
-          }}
-        />
-      )}
+          },
+        };
+
+        return (
+          <input
+            {...props}
+            {...eventProps}
+          />
+        );
+      }}
     </Mutation>
   );
 }
@@ -32,13 +45,23 @@ export default function Input({
 Input.propTypes = {
   mutation: PropTypes.object.isRequired,
   variables: PropTypes.object,
-  valuePath: PropTypes.string.isRequired,
-  value: PropTypes.string,
+  update: PropTypes.func,
+  valuePath: PropTypes.string,
+  variablesFormatter: PropTypes.func,
+  mutateEvent: PropTypes.string.isRequired,
+  type: PropTypes.string,
 };
 
 Input.defaultProps = {
   variables: {
     variables: {},
   },
-  value: '',
+  variablesFormatter: ({
+    variables,
+    valuePath,
+    value,
+  }) => set(variables, valuePath, value),
+  valuePath: '',
+  update: null,
+  type: undefined,
 };
