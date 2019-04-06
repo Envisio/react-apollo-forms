@@ -37,15 +37,15 @@ export default function Input({
                   }),
                 });
               }
+            } else {
+              mutate({
+                variables: variablesFormatter({
+                  variables,
+                  valuePath,
+                  value: newValue,
+                }),
+              });
             }
-
-            mutate({
-              variables: variablesFormatter({
-                variables,
-                valuePath,
-                value: newValue,
-              }),
-            });
           },
         };
 
