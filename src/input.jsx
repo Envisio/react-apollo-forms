@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Mutation } from 'react-apollo';
-import { capitalize, set } from 'lodash';
+import {
+  capitalize,
+  set,
+  size,
+  gt,
+} from 'lodash';
 
 export default function Input({
   mutation,
@@ -10,6 +15,7 @@ export default function Input({
   variablesFormatter,
   mutateEvent,
   type,
+  pattern,
   ...props
 }) {
   return (
@@ -17,10 +23,22 @@ export default function Input({
       {(mutate) => {
         const eventProps = {
           [`on${capitalize(mutateEvent)}`]: ({
-            target: {
-              value: newValue,
-            },
+            target: { value: newValue },
           }) => {
+            if (pattern && gt(size(pattern), 0)) {
+              const regexp = new RegExp(pattern);
+
+              if (newValue.match(regexp)) {
+                mutate({
+                  variables: variablesFormatter({
+                    variables,
+                    valuePath,
+                    value: newValue,
+                  }),
+                });
+              }
+            }
+
             mutate({
               variables: variablesFormatter({
                 variables,
@@ -50,6 +68,7 @@ Input.propTypes = {
   variablesFormatter: PropTypes.func,
   mutateEvent: PropTypes.string.isRequired,
   type: PropTypes.string,
+  pattern: PropTypes.string,
 };
 
 Input.defaultProps = {
@@ -64,4 +83,5 @@ Input.defaultProps = {
   valuePath: '',
   update: null,
   type: undefined,
+  pattern: undefined,
 };
