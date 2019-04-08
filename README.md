@@ -1,14 +1,16 @@
 # react-apollo-forms
 
-## API
+## Input (type="text")
 
-### Props
+### APIs
 
-- `mutation {Object}`: a mutation gql object
-- `defaultValue {Any}`: the value passed to input control
-- `variables {Object}`: for gql variables (don't need the top level `variables` key)
-- `valuePath {String}`: point to the variables for changing value inside
-- `mutateEvent {String}`: e.g. `blur`/`change`, for indicate which event your want to fire the mutation
+#### Props
+
+- `mutation {Object}`: A mutation gql object
+- `defaultValue {Any}`: The value passed to input control
+- `variables {Object}`: For gql variables (don't need the top level `variables` key)
+- `valuePath {String}`: Point to the variables for changing value inside
+- `mutateEvent {String}`: Ex. `blur`/`change`, for indicate which event your want to fire the mutation
 
 ## Basic
 ```
