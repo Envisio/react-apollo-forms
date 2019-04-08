@@ -17,7 +17,6 @@ export default class Input extends Component {
     valuePath: PropTypes.string,
     variablesFormatter: PropTypes.func,
     mutateEvent: PropTypes.string.isRequired,
-    type: PropTypes.string,
     pattern: PropTypes.string,
     debouncable: PropTypes.bool,
     wait: PropTypes.number,
@@ -26,7 +25,6 @@ export default class Input extends Component {
       PropTypes.number,
       PropTypes.bool,
       PropTypes.object,
-      PropTypes.undefined,
     ]),
   }
 
@@ -41,7 +39,6 @@ export default class Input extends Component {
     }) => set(variables, valuePath, value),
     valuePath: '',
     update: null,
-    type: undefined,
     pattern: undefined,
     debouncable: false,
     wait: 0,
@@ -96,7 +93,6 @@ export default class Input extends Component {
       valuePath,
       variablesFormatter,
       mutateEvent,
-      type,
       pattern,
       debouncable,
       wait,
