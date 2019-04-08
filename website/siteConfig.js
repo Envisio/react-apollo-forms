@@ -1,6 +1,6 @@
 const users = [{
   caption: 'User1',
-  image: '/img/docusaurus.svg',
+  image: '/img/wpforms-brands.svg',
   infoLink: 'https://www.facebook.com',
   pinned: true,
 }];
@@ -13,18 +13,18 @@ const siteConfig = {
   projectName: 'react-apollo-forms',
   organizationName: 'Envisio',
   headerLinks: [{
-    doc: 'getting-started',
+    doc: 'quick-start',
     label: 'Getting Started',
   }, {
     doc: 'input',
     label: 'Docs',
   }],
   users,
-  headerIcon: 'img/docusaurus.svg',
-  footerIcon: 'img/docusaurus.svg',
-  favicon: 'img/favicon.png',
+  headerIcon: 'img/wpforms-brands.svg',
+  footerIcon: 'img/wpforms-brands.svg',
+  favicon: 'img/wpforms-brands.png',
   colors: {
-    primaryColor: '#2E8555',
+    primaryColor: '#cc0000',
     secondaryColor: '#205C3B',
   },
   copyright: `Copyright © ${new Date().getFullYear()} Envisio Solution Inc`,
@@ -32,8 +32,8 @@ const siteConfig = {
   scripts: ['https://buttons.github.io/buttons.js'],
   onPageNav: 'separate',
   cleanUrl: true,
-  ogImage: 'img/docusaurus.png',
-  twitterImage: 'img/docusaurus.png',
+  ogImage: 'img/wpforms-brands.png',
+  twitterImage: 'img/wpforms-brands.png',
 };
 
 module.exports = siteConfig;

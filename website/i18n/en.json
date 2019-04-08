@@ -5,11 +5,20 @@
     "previous": "Previous",
     "tagline": "A Component Collection for Apollo Mutation",
     "docs": {
-      "getting-started": {
-        "title": "Getting Started"
+      "button": {
+        "title": "Button"
       },
       "input": {
         "title": "Input"
+      },
+      "quick-start": {
+        "title": "Quick start"
+      },
+      "select": {
+        "title": "Select"
+      },
+      "textarea": {
+        "title": "Textarea"
       }
     },
     "links": {
@@ -18,7 +27,7 @@
     },
     "categories": {
       "Getting Started": "Getting Started",
-      "Input": "Input"
+      "Forms": "Forms"
     }
   },
   "pages-strings": {

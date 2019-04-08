@@ -3,7 +3,7 @@ id: input
 title: Input
 ---
 
-# Props
+## Props
 
 - `mutation {Object}`: a mutation gql object
 - `defaultValue {Any}`: the value passed to input control

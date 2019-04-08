@@ -30,13 +30,13 @@ class Footer extends React.Component {
           </a>
           <div>
             <h5>Docs</h5>
-            <a href={this.docUrl('getting-started.html', this.props.language)}>Getting Started</a>
+            <a href={this.docUrl('quick-start.html', this.props.language)}>Getting Started</a>
             <a href={this.docUrl('input.html', this.props.language)}>API Reference</a>
           </div>
           <div>
             <h5>More</h5>
-            <a href="https://github.com/envisio">GitHub</a>
-            <a href="https://npmjs.org/react-apollo-forms">NPM</a>
+            <a href="https://github.com/envisio" target="_blank">GitHub</a>
+            <a href="https://npmjs.org/react-apollo-forms" target="_blank">NPM</a>
           </div>
         </section>
         <section className="copyright">{this.props.config.copyright}</section>

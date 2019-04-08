@@ -7,6 +7,12 @@
 
 const React = require('react');
 
+const { library } = require('@fortawesome/fontawesome-svg-core');
+const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
+const { fab } = require('@fortawesome/free-brands-svg-icons');
+
+library.add(fab);
+
 const CompLibrary = require('../../core/CompLibrary.js');
 
 const MarkdownBlock = CompLibrary.MarkdownBlock; /* Used to read markdown */
@@ -15,8 +21,8 @@ const GridBlock = CompLibrary.GridBlock;
 
 class HomeSplash extends React.Component {
   render() {
-    const {siteConfig, language = ''} = this.props;
-    const {baseUrl, docsUrl} = siteConfig;
+    const { siteConfig, language = '' } = this.props;
+    const { baseUrl, docsUrl } = siteConfig;
     const docsPart = `${docsUrl ? `${docsUrl}/` : ''}`;
     const langPart = `${language ? `${language}/` : ''}`;
     const docUrl = doc => `${baseUrl}${docsPart}${langPart}${doc}`;
@@ -31,7 +37,7 @@ class HomeSplash extends React.Component {
 
     const Logo = props => (
       <div className="projectLogo">
-        <img src={props.img_src} alt="Project Logo" />
+        <img src={props.img_src} alt="react-apollo-forms" />
       </div>
     );
 
@@ -60,7 +66,7 @@ class HomeSplash extends React.Component {
 
     return (
       <SplashContainer>
-        <Logo img_src={`${baseUrl}img/docusaurus.svg`} />
+        <Logo img_src={`${baseUrl}img/wpforms-brands.svg`} />
         <div className="inner">
           <ProjectTitle siteConfig={siteConfig} />
           {/* <PromoSection>
@@ -76,8 +82,8 @@ class HomeSplash extends React.Component {
 
 class Index extends React.Component {
   render() {
-    const {config: siteConfig, language = ''} = this.props;
-    const {baseUrl} = siteConfig;
+    const { config: siteConfig, language = '' } = this.props;
+    const { baseUrl } = siteConfig;
 
     const Block = props => (
       <Container
@@ -95,7 +101,7 @@ class Index extends React.Component {
     const FeatureCallout = () => (
       <div
         className="productShowcaseSection paddingBottom"
-        style={{textAlign: 'center'}}>
+        style={{ textAlign: 'center' }}>
         <h2>Feature Callout</h2>
         <MarkdownBlock>These are features of this project</MarkdownBlock>
       </div>
@@ -106,7 +112,7 @@ class Index extends React.Component {
         {[
           {
             content: 'Talk about trying this out',
-            image: `${baseUrl}img/docusaurus.svg`,
+            image: `${baseUrl}img/wpforms-brands.svg`,
             imageAlign: 'left',
             title: 'Try it Out',
           },
@@ -120,7 +126,7 @@ class Index extends React.Component {
           {
             content:
               'This is another description of how this project is useful',
-            image: `${baseUrl}img/docusaurus.svg`,
+            image: `${baseUrl}img/wpforms-brands.svg`,
             imageAlign: 'right',
             title: 'Description',
           },
@@ -133,7 +139,7 @@ class Index extends React.Component {
         {[
           {
             content: 'Talk about learning how to use this',
-            image: `${baseUrl}img/docusaurus.svg`,
+            image: `${baseUrl}img/wpforms-brands.svg`,
             imageAlign: 'right',
             title: 'Learn How',
           },
@@ -146,13 +152,13 @@ class Index extends React.Component {
         {[
           {
             content: 'This is the content of my feature',
-            image: `${baseUrl}img/docusaurus.svg`,
+            image: `${baseUrl}img/wpforms-brands.svg`,
             imageAlign: 'top',
             title: 'Feature One',
           },
           {
             content: 'The content of my second feature',
-            image: `${baseUrl}img/docusaurus.svg`,
+            image: `${baseUrl}img/wpforms-brands.svg`,
             imageAlign: 'top',
             title: 'Feature Two',
           },
