@@ -11,8 +11,11 @@
       "input": {
         "title": "Input"
       },
+      "introduction": {
+        "title": "Introduction"
+      },
       "quick-start": {
-        "title": "Quick start"
+        "title": "Quick Start"
       },
       "select": {
         "title": "Select"

@@ -25,6 +25,7 @@ export default class Input extends Component {
       PropTypes.number,
       PropTypes.bool,
       PropTypes.object,
+      PropTypes.array,
     ]),
   }
 

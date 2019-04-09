@@ -1,6 +1,6 @@
 ---
 id: quick-start
-title: Quick start
+title: Quick Start
 ---
 
 # Installation
