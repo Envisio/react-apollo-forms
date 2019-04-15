@@ -11,6 +11,7 @@ export default function MutateButton({
   ignoreResults,
   children,
   variables,
+  onClick,
   ...props
 }) {
   return (
@@ -26,9 +27,9 @@ export default function MutateButton({
         <button
           type="button"
           {...props}
-          onClick={(e) => {
-            e.preventDefault();
+          onClick={(mouseEvent) => {
             action({ variables });
+            onClick(mouseEvent);
           }}
         >
           {children}
@@ -47,6 +48,7 @@ MutateButton.propTypes = {
   update: PropTypes.func,
   ignoreResults: PropTypes.bool,
   onError: PropTypes.func,
+  onClick: PropTypes.func,
 };
 
 MutateButton.defaultProps = {
@@ -59,4 +61,5 @@ MutateButton.defaultProps = {
   refetchQueries: [],
   ignoreResults: false,
   onError: () => {},
+  onClick: () => {},
 };
