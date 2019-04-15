@@ -27,6 +27,7 @@ export default class Input extends Component {
       PropTypes.object,
       PropTypes.array,
     ]),
+    type: PropTypes.string,
   }
 
   static defaultProps = {
@@ -44,6 +45,7 @@ export default class Input extends Component {
     debouncable: false,
     wait: 0,
     defaultValue: '',
+    type: undefined,
   }
 
   constructor(props) {
@@ -97,6 +99,7 @@ export default class Input extends Component {
       pattern,
       debouncable,
       wait,
+      type,
       ...props
     } = this.props;
 
@@ -133,6 +136,7 @@ export default class Input extends Component {
 
           return (
             <input
+              type={type}
               {...props}
               {...eventProps}
             />
