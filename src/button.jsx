@@ -12,6 +12,7 @@ export default function MutateButton({
   children,
   variables,
   onClick,
+  awaitRefetchQueries,
   ...props
 }) {
   return (
@@ -22,6 +23,7 @@ export default function MutateButton({
       onCompleted={onCompleted}
       onError={onError}
       ignoreResults={ignoreResults}
+      awaitRefetchQueries={awaitRefetchQueries}
     >
       {action => (
         <button
@@ -49,6 +51,7 @@ MutateButton.propTypes = {
   ignoreResults: PropTypes.bool,
   onError: PropTypes.func,
   onClick: PropTypes.func,
+  awaitRefetchQueries: PropTypes.bool,
 };
 
 MutateButton.defaultProps = {
@@ -62,4 +65,5 @@ MutateButton.defaultProps = {
   ignoreResults: false,
   onError: () => {},
   onClick: () => {},
+  awaitRefetchQueries: false,
 };
