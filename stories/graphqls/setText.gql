@@ -1,0 +1,3 @@
+mutation setText($value: String!) {
+  setText(value: $value) @client
+}
