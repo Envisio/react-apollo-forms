@@ -1,7 +1,0 @@
-{
-  "docs": {
-    "Getting Started": ["introduction", "quick-start"],
-    "Forms": ["input", "button", "select", "textarea"]
-  },
-  "docs-other": {}
-}

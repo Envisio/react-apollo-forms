@@ -1,0 +1,3 @@
+mutation toggleStatus {
+  toggleStatus @client
+}
