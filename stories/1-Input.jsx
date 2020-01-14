@@ -15,14 +15,14 @@ const client = new ApolloClient({
   cache,
   resolvers: {
     Mutation: {
-      setText: (_, variables, { cache: c }) => {
-        c.writeData({ data: variables });
+      setText: (_, variables, { cache: clientCache }) => {
+        clientCache.writeData({ data: variables });
       },
     },
   },
 });
 
-cache.writeData({ data: { value: 'Barry' } });
+cache.writeData({ data: { name: 'Barry Allen' } });
 
 const Page = () => {
   const {
@@ -35,11 +35,18 @@ const Page = () => {
   }
 
   return (
-    <Input
-      mutation={loader('./graphqls/setText.gql')}
-      defaultValue={data.value}
-      valuePath="value"
-    />
+    <>
+      <Input
+        mutation={loader('./graphqls/setText.gql')}
+        value={data.name}
+        valuePath="name"
+      />
+      <Input
+        mutation={loader('./graphqls/setText.gql')}
+        value={data.name}
+        valuePath="name"
+      />
+    </>
   );
 };
 
