@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/client';
 import PropTypes from 'prop-types';
 import {
@@ -16,17 +16,17 @@ export default function Input({
   pattern,
   wait,
   type,
-  defaultValue,
+  value: defaultValue,
   ...props
 }) {
   const [value, setValue] = useState(defaultValue);
   const [mutate] = useMutation(mutation);
-  const updater = () => {
+  const updater = (targetValue) => {
     mutate({
       variables: formatter({
         variables,
         valuePath,
-        value,
+        value: targetValue,
       }),
     });
   };
@@ -34,26 +34,30 @@ export default function Input({
   const eventProps = {
     [`on${capitalize(mutateEvent)}`]: ({ target: { value: targetValue } }) => {
       setValue(targetValue);
-      console.log(targetValue)
+
       if (pattern) {
         const regexp = new RegExp(pattern);
 
         if (targetValue.match(regexp)) {
           if (wait) {
-            debouncer();
+            debouncer(targetValue);
           } else {
-            updater();
+            updater(targetValue);
           }
         } else {
           // onInvalid
         }
       } else if (wait) {
-        debouncer();
+        debouncer(targetValue);
       } else {
-        updater();
+        updater(targetValue);
       }
     },
   };
+
+  useEffect(() => {
+    setValue(defaultValue);
+  }, [defaultValue]);
 
   return (
     <input
@@ -74,7 +78,7 @@ Input.propTypes = {
   mutateEvent: PropTypes.string,
   pattern: PropTypes.string,
   wait: PropTypes.number,
-  defaultValue: PropTypes.oneOfType([
+  value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
     PropTypes.bool,
@@ -97,7 +101,7 @@ Input.defaultProps = {
   update: null,
   pattern: undefined,
   wait: 0,
-  defaultValue: '',
+  value: '',
   type: undefined,
   mutateEvent: 'change',
 };
