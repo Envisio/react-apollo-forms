@@ -35,23 +35,45 @@ const Page = () => {
   }
 
   return (
-    <>
-      <Input
-        mutation={loader('./graphqls/setText.gql')}
-        value={data.name}
-        valuePath="name"
-      />
-      <Input
-        mutation={loader('./graphqls/setText.gql')}
-        value={data.name}
-        valuePath="name"
-      />
-    </>
+    <Input
+      mutation={loader('./graphqls/setText.gql')}
+      value={data.name}
+      valuePath="name"
+      style={{
+        display: 'block',
+        fontSize: '64px',
+        borderRadius: '10px',
+        border: 'solid 1px grey',
+      }}
+    />
+  );
+};
+
+const StateLabel = () => {
+  const {
+    data,
+    loading,
+  } = useQuery(loader('./graphqls/getText.gql'));
+
+  if (loading) {
+    return '';
+  }
+
+  return (
+    <label
+      style={{
+        display: 'block',
+        fontFamily: 'Monaco, Ubuntu, Courier',
+      }}
+    >
+      {JSON.stringify(data)}
+    </label>
   );
 };
 
 export const Text = () => (
   <ApolloProvider client={client}>
     <Page />
+    <StateLabel />
   </ApolloProvider>
 );

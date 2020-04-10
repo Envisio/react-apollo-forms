@@ -8,10 +8,8 @@
   },
   "main": "./lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel ./src -d lib",
-    "storybook": "start-storybook -p 6006",
-    "publish": "build-storybook -c .storybook -o ./docs"
+    "build": "babel ./src -d lib && build-storybook -c .storybook -o ./docs",
+    "test": "start-storybook -p 6006"
   },
   "repository": {
     "type": "git",
@@ -23,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/Envisio/react-apollo-forms/issues"
   },
-  "homepage": "https://github.com/Envisio/react-apollo-forms#readme",
+  "homepage": "https://envisio.github.io/react-apollo-forms/",
   "devDependencies": {
     "@babel/cli": "^7.8.3",
     "@babel/core": "^7.8.3",
