@@ -23,7 +23,7 @@ const client = new ApolloClient({
   },
 });
 
-cache.writeData({ data: { status: true } })
+cache.writeData({ data: { status: true } });
 
 const Content = () => {
   const {
@@ -37,11 +37,41 @@ const Content = () => {
 
   return data.status ? '🈶' : '🈚️';
 };
+const StateLabel = () => {
+  const {
+    data,
+    loading,
+  } = useQuery(loader('./graphqls/getStatus.gql'));
+
+  if (loading) {
+    return '';
+  }
+
+  return (
+    <label
+      style={{
+        display: 'block',
+        fontFamily: 'Monaco, Ubuntu, Courier',
+      }}
+    >
+      {JSON.stringify(data)}
+    </label>
+  );
+};
 
 export const basic = () => (
   <ApolloProvider client={client}>
-    <Button mutation={loader('./graphqls/toggleStatus.gql')}>
+    <Button
+      mutation={loader('./graphqls/toggleStatus.gql')}
+      style={{
+        fontSize: '128px',
+        backgroundColor: 'transparent',
+        borderStyle: 'none',
+        cursor: 'pointer',
+      }}
+    >
       <Content />
     </Button>
+    <StateLabel />
   </ApolloProvider>
 );
