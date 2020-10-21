@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/client';
 import PropTypes from 'prop-types';
-import {
-  capitalize,
-  set,
-  debounce,
-} from 'lodash';
+import { capitalize, set, debounce } from 'lodash';
 
 export default function Input({
   mutation,
