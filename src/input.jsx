@@ -1,103 +1,70 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useMutation } from '@apollo/client';
 import PropTypes from 'prop-types';
-import { capitalize, set, debounce } from 'lodash';
+import { omit } from 'lodash';
 
-export default function Input({
+const Input = ({
+  // Mutation props
   mutation,
   variables,
-  valuePath,
-  formatter,
-  mutateEvent,
-  pattern,
-  wait,
-  type,
-  value: defaultValue,
+  update,
+  ignoreResults,
+  optimisticResponse,
+  refetchQueries,
+  awaitRefetchQueries,
+  onCompleted,
+  onError,
+  // Event handler
+  eventType,
+  // HTML attributes
   ...props
-}) {
-  const [value, setValue] = useState(defaultValue);
-  const [mutate] = useMutation(mutation);
-  const updater = (targetValue) => {
-    mutate({
-      variables: formatter({
-        variables,
-        valuePath,
-        value: targetValue,
-      }),
-    });
+}) => {
+  const [mutate] = useMutation(mutation, {
+    variables,
+    update,
+    ignoreResults,
+    refetchQueries,
+    onCompleted,
+    onError,
+  });
+  const onMutate = (...originalEvents) => {
+    if (props[eventType]) {
+      props[eventType](...originalEvents, mutate);
+    } else {
+      mutate();
+    }
   };
-  const debouncer = debounce(updater, wait);
-  const eventProps = {
-    [`on${capitalize(mutateEvent)}`]: ({ target: { value: targetValue } }) => {
-      setValue(targetValue);
-
-      if (pattern) {
-        const regexp = new RegExp(pattern);
-
-        if (targetValue.match(regexp)) {
-          if (wait) {
-            debouncer(targetValue);
-          } else {
-            updater(targetValue);
-          }
-        } else {
-          // onInvalid
-        }
-      } else if (wait) {
-        debouncer(targetValue);
-      } else {
-        updater(targetValue);
-      }
-    },
-  };
-
-  useEffect(() => {
-    setValue(defaultValue);
-  }, [defaultValue]);
 
   return (
     <input
-      type={type}
-      value={value}
-      {...props}
-      {...eventProps}
+      {...{ [eventType]: onMutate }}
+      {...omit(props, [eventType])}
     />
   );
-}
+};
 
 Input.propTypes = {
-  mutation: PropTypes.object.isRequired,
-  variables: PropTypes.object,
+  mutation: PropTypes.shape({ }).isRequired,
+  variables: PropTypes.shape({ }),
   update: PropTypes.func,
-  valuePath: PropTypes.string,
-  formatter: PropTypes.func,
-  mutateEvent: PropTypes.string,
-  pattern: PropTypes.string,
-  wait: PropTypes.number,
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.bool,
-    PropTypes.object,
-    PropTypes.array,
-  ]),
-  type: PropTypes.string,
+  ignoreResults: PropTypes.bool,
+  optimisticResponse: PropTypes.shape({ }),
+  refetchQueries: PropTypes.arrayOf(PropTypes.shape({ })),
+  awaitRefetchQueries: PropTypes.bool,
+  onCompleted: PropTypes.func,
+  onError: PropTypes.func,
+  eventType: PropTypes.string,
+};
+Input.defaultProps = {
+  variables: {},
+  update: undefined,
+  ignoreResults: false,
+  optimisticResponse: undefined,
+  refetchQueries: undefined,
+  awaitRefetchQueries: false,
+  onCompleted: undefined,
+  onError: undefined,
+  eventType: 'onChange',
 };
 
-Input.defaultProps = {
-  variables: {
-    variables: {},
-  },
-  formatter: ({
-    variables,
-    valuePath,
-    value,
-  }) => set(variables, valuePath, value),
-  valuePath: '',
-  update: null,
-  pattern: undefined,
-  wait: 0,
-  value: '',
-  type: undefined,
-  mutateEvent: 'change',
-};
+export default Input;

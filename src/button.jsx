@@ -53,7 +53,7 @@ Button.propTypes = {
   update: PropTypes.func,
   ignoreResults: PropTypes.bool,
   optimisticResponse: PropTypes.shape({ }),
-  refetchQueries: PropTypes.arrayOf(PropTypes.shape({})),
+  refetchQueries: PropTypes.arrayOf(PropTypes.shape({ })),
   awaitRefetchQueries: PropTypes.bool,
   onCompleted: PropTypes.func,
   onError: PropTypes.func,

@@ -1,6 +1,6 @@
 # react-apollo-forms
 
-## Basic
+## &lt;Button&gt;
 ```
 import React from 'react';
 import { Button } from 'react-apollo-forms';
@@ -17,7 +17,32 @@ export const SaveButton = () => (
   </Buttom>
 );
 ```
-## Props
+
+## &lt;Input&gt;
+```
+import React from 'react';
+import { Button } from 'react-apollo-forms';
+import mutation from './update.gql';
+
+export const UserInput = () => (
+  <Input
+    type="text"
+    mutation={mutation}
+    value="Clark Kent"
+    onChange={({
+      target: {
+        value: name,
+      },
+    }, mutate) => mutate({
+      variables: {
+        name,
+      },
+    })}
+  />
+);
+```
+
+### Props
 | Prop | Type  | Required | Default | Description |
 | :--- | :--- | :---: | :--- | :--- |
 `mutation` | `DocumentNode` | Yes | | A GraphQL mutation document parsed into an AST by graphql-tag. Optional for the useMutation Hook since the mutation can be passed in as the first parameter to the Hook. Required for the Mutation component.
@@ -30,6 +55,7 @@ export const SaveButton = () => (
 `onCompleted` | `(data: TData) => void` | | `undefined` | A callback executed once your mutation successfully completes
 `onError` | `(error: ApolloError) => void` | | `undefined` | A callback executed in the event of an error.
 | `mutateEvent` | `String` | | `onClick` | It supports all the DOM even types, and specifies the condition of firing the mutation. |
+
 > This component accepts all the options base on [`useMutation`](https://www.apollographql.com/docs/react/data/mutations/#options) hook except `context` and `client`
 
 > This component accepts all the HTML attributes and event handlers passed in.
