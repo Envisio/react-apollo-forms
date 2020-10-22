@@ -1,24 +1,28 @@
-# react-apollo-forms
-
-## &lt;Button&gt;
+## `<Button>`
 ```
 import React from 'react';
 import { Button } from 'react-apollo-forms';
 import mutation from './update.gql';
 
-export const SaveButton = () => (
-  <Button
-    mutation={mutation}
-    variables={{
+export const SaveButton = () => {
+  const variables = {
+    variables: {
       name: 'Barry Allen',
-    }}
-  >
-    Change Name
-  </Buttom>
-);
+    },
+  };
+
+  return (
+    <Button
+      mutation={mutation}
+      variables={variables}
+    >
+      Change Name
+    </Buttom>
+  );
+};
 ```
 
-## &lt;Input&gt;
+## `<Input>`
 ```
 import React from 'react';
 import { Button } from 'react-apollo-forms';
