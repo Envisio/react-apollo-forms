@@ -1,3 +1,0 @@
-mutation setText($name: String!) {
-  setText(name: $name) @client
-}

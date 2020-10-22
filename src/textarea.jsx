@@ -3,7 +3,8 @@ import { useMutation } from '@apollo/client';
 import PropTypes from 'prop-types';
 import { omit } from 'lodash';
 
-const Input = ({
+const Textarea = ({
+  children,
   // Mutation props
   mutation,
   variables,
@@ -36,14 +37,16 @@ const Input = ({
   };
 
   return (
-    <input
+    <textarea
       {...{ [eventType]: onMutate }}
       {...omit(props, [eventType])}
-    />
+    >
+      {children}
+    </textarea>
   );
 };
 
-Input.propTypes = {
+Textarea.propTypes = {
   mutation: PropTypes.shape({ }).isRequired,
   variables: PropTypes.shape({ }),
   update: PropTypes.func,
@@ -54,8 +57,9 @@ Input.propTypes = {
   onCompleted: PropTypes.func,
   onError: PropTypes.func,
   eventType: PropTypes.string,
+  children: PropTypes.node,
 };
-Input.defaultProps = {
+Textarea.defaultProps = {
   variables: {},
   update: undefined,
   ignoreResults: false,
@@ -65,6 +69,7 @@ Input.defaultProps = {
   onCompleted: undefined,
   onError: undefined,
   eventType: 'onChange',
+  children: null,
 };
 
-export default Input;
+export default Textarea;
