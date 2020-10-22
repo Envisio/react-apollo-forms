@@ -28,22 +28,26 @@ import React from 'react';
 import { Button } from 'react-apollo-forms';
 import mutation from './update.gql';
 
-export const UserInput = () => (
-  <Input
-    type="text"
-    mutation={mutation}
-    value="Clark Kent"
-    onChange={({
-      target: {
-        value: name,
-      },
-    }, mutate) => mutate({
-      variables: {
-        name,
-      },
-    })}
-  />
-);
+export const UserInput = () => {
+  const onChange = ({
+    target: {
+      value: name,
+    },
+  }, mutate) => mutate({
+    variables: {
+      name,
+    },
+  });
+
+  return (
+    <Input
+      type="text"
+      mutation={mutation}
+      value="Clark Kent"
+      onChange={onChange}
+    />
+  );
+};
 ```
 
 > This component accepts all the options base on [`useMutation`](https://www.apollographql.com/docs/react/data/mutations/#options) hook except `context` and `client`
