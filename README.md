@@ -1,6 +1,6 @@
 # react-apollo-forms
 
-## &lt;Button&gt;
+## `<Button>`
 ```
 import React from 'react';
 import { Button } from 'react-apollo-forms';
@@ -18,10 +18,10 @@ export const SaveButton = () => (
 );
 ```
 
-## &lt;Input&gt;
+## `<Input>`
 ```
 import React from 'react';
-import { Button } from 'react-apollo-forms';
+import { Input } from 'react-apollo-forms';
 import mutation from './update.gql';
 
 export const UserInput = () => (
@@ -36,6 +36,30 @@ export const UserInput = () => (
     }, mutate) => mutate({
       variables: {
         name,
+      },
+    })}
+  />
+);
+```
+
+## `<Textarea>`
+```
+import React from 'react';
+import { Textarea } from 'react-apollo-forms';
+import mutation from './update.gql';
+
+export const DescriptionInput = () => (
+  <Textarea
+    type="text"
+    mutation={mutation}
+    value="Bruce Wayne"
+    onChange={({
+      target: {
+        value: description,
+      },
+    }, mutate) => mutate({
+      variables: {
+        description,
       },
     })}
   />

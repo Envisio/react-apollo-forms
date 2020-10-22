@@ -10,7 +10,13 @@
     "type": "git",
     "url": "git+https://github.com/Envisio/react-apollo-forms.git"
   },
-  "keywords": ["react", "apollo", "input", "mutation", "query"],
+  "keywords": [
+    "react",
+    "apollo",
+    "input",
+    "mutation",
+    "query"
+  ],
   "author": "s@zhso.net",
   "license": "MIT",
   "bugs": {
@@ -25,18 +31,18 @@
     "@typescript-eslint/eslint-plugin": "^4.5.0",
     "@typescript-eslint/parser": "^4.5.0",
     "eslint": "^7.11.0",
-    "eslint-config-standard": "^14.1.1",
+    "eslint-config-standard": "^15.0.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.21.5",
-    "eslint-plugin-standard": "^4.0.1"
+    "eslint-plugin-standard": "^4.0.2"
   },
   "dependencies": {
     "@apollo/client": "^3.2.5",
     "lodash": "^4.17.20",
     "prop-types": "^15.7.2",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0"
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   }
 }
