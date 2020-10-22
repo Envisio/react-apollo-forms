@@ -25,7 +25,7 @@ export const SaveButton = () => {
 ## `<Input>`
 ```
 import React from 'react';
-import { Button } from 'react-apollo-forms';
+import { Input } from 'react-apollo-forms';
 import mutation from './update.gql';
 
 export const UserInput = () => {
@@ -48,6 +48,30 @@ export const UserInput = () => {
     />
   );
 };
+```
+
+## `<Textarea>`
+```
+import React from 'react';
+import { Textarea } from 'react-apollo-forms';
+import mutation from './update.gql';
+
+export const DescriptionInput = () => (
+  <Textarea
+    type="text"
+    mutation={mutation}
+    value="Bruce Wayne"
+    onChange={({
+      target: {
+        value: description,
+      },
+    }, mutate) => mutate({
+      variables: {
+        description,
+      },
+    })}
+  />
+);
 ```
 
 > This component accepts all the options base on [`useMutation`](https://www.apollographql.com/docs/react/data/mutations/#options) hook except `context` and `client`
