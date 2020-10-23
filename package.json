@@ -1,5 +1,5 @@
 {
-  "name": "@zhso/react-apollo-forms",
+  "name": "react-apollo-forms",
   "version": "2.0.0",
   "description": "",
   "main": "./lib/index.js",
