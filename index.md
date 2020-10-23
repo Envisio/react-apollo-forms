@@ -74,6 +74,34 @@ export const DescriptionInput = () => (
 );
 ```
 
+## `<Select>`
+```
+import React from 'react';
+import { Select } from 'react-apollo-forms';
+import mutation from './update.gql';
+
+export const HeroPicker = () => (
+  <Select
+    type="text"
+    mutation={mutation}
+    value={hero} // Value comes from query results for dynamic change.
+    onChange={({
+      target: {
+        value: hero,
+      },
+    }, mutate) => mutate({
+      variables: {
+        hero,
+      },
+    })}
+  >
+    <option value="bat-man">Bruce Wayne</option>
+    <option value="super-man">Clark Kent</option>
+    <option value="flash">Barry Allen</option>
+  </Select>
+);
+```
+
 > This component accepts all the options base on [`useMutation`](https://www.apollographql.com/docs/react/data/mutations/#options) hook except `context` and `client`
 
 > This component accepts all the HTML attributes and event handlers passed in.
