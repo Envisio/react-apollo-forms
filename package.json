@@ -1,5 +1,5 @@
 {
-  "name": "react-apollo-forms",
+  "name": "@envisio/react-apollo-forms",
   "version": "2.0.0",
   "description": "",
   "main": "./lib/index.js",
