@@ -1,5 +1,7 @@
 # react-apollo-forms
 
+# Consider that the React Apollo is being use hooks instead of component as wrapper, this repository is deprecated for future as well
+
 ## `<Button>`
 ```
 import React from 'react';
